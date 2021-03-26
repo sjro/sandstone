@@ -101,7 +101,7 @@ export const With5WaySelectableActivator = () => (
 With5WaySelectableActivator.storyName = 'with 5-way selectable activator';
 
 export const WithOverflows = () => (
-	<div style={{position: 'relative', width: '100%', height: '100%'}}>
+	<div style={{marginBottom: ri.scaleToRem(260)}}>
 		<Heading showLine>direction Up</Heading>
 		<div
 			style={{display: 'flex', justifyContent: 'space-between', marginBottom: ri.scaleToRem(24)}}
@@ -134,10 +134,7 @@ export const WithOverflows = () => (
 				</ContextualPopupWithActivator>
 			</div>
 			<div style={{flexGrow: '1', display: 'flex', justifyContent: 'space-between'}}>
-				<ContextualPopupWithActivator
-					direction="right middle"
-					popupComponent={renderSuperTallPopup}
-				>
+				<ContextualPopupWithActivator direction="right middle" popupComponent={renderSuperTallPopup}>
 					Overflows Top
 				</ContextualPopupWithActivator>
 				<ContextualPopupWithActivator direction="right middle" popupComponent={renderWidePopup}>
