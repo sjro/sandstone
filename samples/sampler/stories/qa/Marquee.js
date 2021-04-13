@@ -18,6 +18,7 @@ Marquee.displayName = 'Marquee';
 const SpottableMarquee = Spottable(Skinnable(Marquee));
 const Controller = MarqueeController('div');
 const SpottableDiv = MarqueeController({marqueeOnFocus: true}, Spottable(Skinnable('div')));
+const MarqueeI18nDiv = MarqueeController({marqueeOnRender: true}, 'div');
 
 const LTR = [
 	'The quick brown fox jumped over the lazy dog. The bean bird flies at sundown.',
@@ -59,12 +60,12 @@ const MarqueeI18nSamples = I18nContextDecorator(
 		},
 
 		render: ({updateLocale}) => (
-			<div>
+			<MarqueeI18nDiv>
 				<Heading showLine>
 					Remeasure marquee when locale change causes a font change with different metrics
 				</Heading>
 				<Button onClick={updateLocale}>Change locale and marquee stops</Button>
-			</div>
+			</MarqueeI18nDiv>
 		)
 	})
 );
