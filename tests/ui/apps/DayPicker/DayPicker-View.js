@@ -16,17 +16,6 @@ const app = (props) => <div style={{display: 'flex'}} {...props}>
 		disabled
 		style={{width: '400px'}}
 	/>
-	<DayPicker
-		id="dayPickerSelectedOption"
-		selected={0}
-		style={{width: '400px'}}
-	/>
-	<DayPicker
-		id="dayPickerSelectedOptionDisabled"
-		disabled
-		selected={0}
-		style={{width: '400px'}}
-	/>
 </div>;
 
 export default ThemeDecorator(app);

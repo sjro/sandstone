@@ -1,12 +1,14 @@
 'use strict';
-const {Page, getComponent, componentSelector, hasClass, element} = require('@enact/ui-test-utils/utils');
-
-// const isSelected = hasClass(componentSelector({component: 'Item', child: 'selected'}));
+const {element, Page} = require('@enact/ui-test-utils/utils');
 
 class DayPickerInterface {
-	constructor(id) {
+	constructor (id) {
 		this.id = id;
 		this.selector = `#${this.id}`;
+	}
+
+	get self () {
+		return $(`#${this.id}`);
 	}
 
 	focus () {
@@ -14,31 +16,18 @@ class DayPickerInterface {
 	}
 
 	item (index) {
-		return element(
-			`${componentSelector({component: 'Item'})}[data-index="${index}"]`,
-			this.list
-		);
-	}
-
-	get list() {
-		return getComponent({component: 'DayPicker'}, browser);
-	}
-
-	isSelected () {
-		return $(this.selector + ' .Item_Item_selected').isExisting();
+		return element(`.DayPicker_DayPicker_item[data-index="${index}"]`, this.self);
 	}
 }
 
 class DayPickerPage extends Page {
-	constructor() {
+	constructor () {
 		super();
 		this.title = 'DayPicker Test';
 		const defaultDayPicker = new DayPickerInterface('dayPickerDefault');
 		const disabledDayPicker = new DayPickerInterface('dayPickerDisabled');
-		const selectedDayPicker = new DayPickerInterface('dayPickerSelectedOption');
-		const selectedDisabledDayPicker = new DayPickerInterface('dayPickerSelectedOptionDisabled');
 
-		this.components = {defaultDayPicker, disabledDayPicker, selectedDayPicker, selectedDisabledDayPicker};
+		this.components = {defaultDayPicker, disabledDayPicker};
 	}
 
 	open (urlExtra) {
